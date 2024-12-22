@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name: Gutenberg Bootstrap Blocks
+ * Plugin Name: bootenberg Blocks
  * Description: إلغاء الكلاسات الافتراضية لـ Gutenberg واستخدام كلاسات Bootstrap فقط مع إضافة بلوك مخصص.
  * Version: 1.0
  * Author: Your Name
