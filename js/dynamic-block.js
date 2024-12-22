@@ -5,22 +5,26 @@
     var TextControl = components.TextControl;
     var ToggleControl = components.ToggleControl;
     var CheckboxControl = components.CheckboxControl;
+    var RangeControl = components.RangeControl;
 
     blocks.registerBlockType('gutenberg-bootstrap-blocks/dynamic-block', {
         title: 'Dynamic Block with Bootstrap',
         icon: 'grid-view',
         category: 'widgets',
-    
+
         attributes: {
             postType: { type: 'string', default: 'post' },
             postsPerPage: { type: 'number', default: 3 },
             enableShadow: { type: 'boolean', default: false },
             cardColor: { type: 'string', default: 'bg-light' },
+            buttonColor: { type: 'string', default: 'btn-primary' },
+            textColor: { type: 'string', default: 'text-dark' },
             selectedFields: { type: 'array', default: ['title', 'image', 'excerpt'] },
             columns: { type: 'number', default: 3 },
             readMoreText: { type: 'string', default: 'Read More' },
+            excerptLength: { type: 'number', default: 15 },
         },
-    
+
         edit: function (props) {
             var attributes = props.attributes;
 
@@ -31,6 +35,7 @@
                         value: attributes.postType,
                         options: [
                             { label: 'Posts', value: 'post' },
+                            { label: 'pages', value: 'pages'},
                             { label: 'Products', value: 'product' },
                         ],
                         onChange: function (value) {
@@ -42,7 +47,7 @@
                         type: 'number',
                         value: attributes.postsPerPage,
                         onChange: function (value) {
-                            props.setAttributes({ postsPerPage: parseInt(value) || 3 });
+                            props.setAttributes({ postsPerPage: parseInt(value) || 8 });
                         }
                     }),
                     el(ToggleControl, {
@@ -53,7 +58,7 @@
                         }
                     }),
                     el(SelectControl, {
-                        label: 'Card Color',
+                        label: 'Card Background Color',
                         value: attributes.cardColor,
                         options: [
                             { label: 'Light', value: 'bg-light' },
@@ -65,6 +70,31 @@
                             props.setAttributes({ cardColor: value });
                         }
                     }),
+                    el(SelectControl, {
+                        label: 'Button Color',
+                        value: attributes.buttonColor,
+                        options: [
+                            { label: 'Primary', value: 'btn-primary' },
+                            { label: 'Secondary', value: 'btn-secondary' },
+                            { label: 'Success', value: 'btn-success' },
+                            { label: 'Danger', value: 'btn-danger' },
+                        ],
+                        onChange: function (value) {
+                            props.setAttributes({ buttonColor: value });
+                        }
+                    }),
+                    el(SelectControl, {
+                        label: 'Text Color',
+                        value: attributes.textColor,
+                        options: [
+                            { label: 'Dark', value: 'text-dark' },
+                            { label: 'Light', value: 'text-light' },
+                            { label: 'Muted', value: 'text-muted' },
+                        ],
+                        onChange: function (value) {
+                            props.setAttributes({ textColor: value });
+                        }
+                    }),
                     el(TextControl, {
                         label: 'Read More Text',
                         type: 'text',
@@ -73,8 +103,17 @@
                             props.setAttributes({ readMoreText: value });
                         }
                     }),
+                    el(RangeControl, {
+                        label: 'Excerpt Length',
+                        value: attributes.excerptLength,
+                        min: 5,
+                        max: 50,
+                        onChange: function (value) {
+                            props.setAttributes({ excerptLength: value });
+                        }
+                    }),
                     el('div', { className: 'field-selector' },
-                        el('label', {}, 'Select Fields to Display:'),
+                        el('label', { style: { fontWeight: 'bold', display: 'block', marginBottom: '10px' } }, 'Select Fields to Display:'),
                         ['title', 'image', 'excerpt', 'date'].map(function (field) {
                             return el(CheckboxControl, {
                                 key: field,
@@ -82,13 +121,15 @@
                                 checked: attributes.selectedFields.includes(field),
                                 onChange: function (isChecked) {
                                     const updatedFields = isChecked
-                                        ? [...attributes.selectedFields, field]
+                                        ? [...new Set([...attributes.selectedFields, field])] // منع التكرار
                                         : attributes.selectedFields.filter(f => f !== field);
+                    
                                     props.setAttributes({ selectedFields: updatedFields });
                                 }
                             });
                         })
-                    ),
+                    )
+                    ,
                     el(SelectControl, {
                         label: 'Number of Columns',
                         value: attributes.columns,
@@ -108,12 +149,10 @@
                 )
             ];
         },
-    
+
         save: function () {
             return null; // يتم توليد المحتوى ديناميكيًا عبر PHP
         },
     });
 
 } )( window.wp.blocks, window.wp.element, window.wp.editor, window.wp.components );
-
-
