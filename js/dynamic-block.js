@@ -34,9 +34,11 @@
                         label: 'Post Type',
                         value: attributes.postType,
                         options: [
-                            { label: 'Posts', value: 'post' },
-                            { label: 'pages', value: 'pages'},
-                            { label: 'Products', value: 'product' },
+                            { label: 'Posts', value: 'post' },       // المنشورات
+                            { label: 'Pages', value: 'page' },       // الصفحات
+                            { label: 'Products', value: 'product' }, // المنتجات
+                            { label: 'Categories', value: 'category' }, // التصنيفات
+                            { label: 'Tags', value: 'tag' }, 
                         ],
                         onChange: function (value) {
                             props.setAttributes({ postType: value });
@@ -65,6 +67,10 @@
                             { label: 'Dark', value: 'bg-dark' },
                             { label: 'Primary', value: 'bg-primary' },
                             { label: 'Secondary', value: 'bg-secondary' },
+                            { label: 'Success', value: 'bg-success' },
+                            { label: 'Danger', value: 'bg-danger' },
+                            { label: 'Warning', value: 'bg-warning' },
+                            { label: 'Info', value: 'bg-info' },
                         ],
                         onChange: function (value) {
                             props.setAttributes({ cardColor: value });
@@ -74,10 +80,14 @@
                         label: 'Button Color',
                         value: attributes.buttonColor,
                         options: [
-                            { label: 'Primary', value: 'btn-primary' },
-                            { label: 'Secondary', value: 'btn-secondary' },
-                            { label: 'Success', value: 'btn-success' },
-                            { label: 'Danger', value: 'btn-danger' },
+                            { label: 'Light', value: 'bg-light' },
+                            { label: 'Dark', value: 'bg-dark' },
+                            { label: 'Primary', value: 'bg-primary' },
+                            { label: 'Secondary', value: 'bg-secondary' },
+                            { label: 'Success', value: 'bg-success' },
+                            { label: 'Danger', value: 'bg-danger' },
+                            { label: 'Warning', value: 'bg-warning' },
+                            { label: 'Info', value: 'bg-info' },
                         ],
                         onChange: function (value) {
                             props.setAttributes({ buttonColor: value });
@@ -151,7 +161,7 @@
         },
 
         save: function () {
-            return null; // يتم توليد المحتوى ديناميكيًا عبر PHP
+            return null; //dynamic php 
         },
     });
 

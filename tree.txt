@@ -1,0 +1,17 @@
+myplugin/
+├── assets/
+│   ├── js/
+│   │   └── bundle.js       // ملف JavaScript النهائي (مُجمع بواسطة Webpack)
+│   └── css/
+│       └── style.css       // ملف CSS الخاص بالإضافة
+├── js/
+│   ├── custom-blocks.js    ملف بلوك سيتم تجزئته مستقبلا
+│   ├── index.js    // الملف الأساسي لإدارة الأكواد (نقطة الدخول)
+│   └── blocks/
+│       ├── bootstrap-button.js // كود البلوك الخاص بأزرار البوتستراب
+│       ├── bootstrap-row.js    // كود البلوك الخاص بالصفوف
+│       ├── bootstrap-column.js // كود البلوك الخاص بالأعمدة
+|       |-- bootstrap-auth.js // login and register 
+├── index.php               // الملف الرئيسي للإضافة (PHP)
+├── package.json            // إعدادات Node.js والمكتبات
+├── webpack.config.js       // إعداد Webpack لتجميع JavaScript
