@@ -122,3 +122,4 @@ add_action('init', 'bootenberg_register_blocks');
  * Include dynamic block files.
  */
 include_once('dynamic-block.php');
+
