@@ -12,6 +12,7 @@
     "cssnano": "^7.0.6",
     "postcss": "^8.4.49",
     "tailwindcss": "^3.4.17"
+    
   },
   "devDependencies": {
     "@babel/cli": "^7.26.4",

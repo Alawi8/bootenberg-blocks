@@ -1,5 +1,6 @@
 const classRename = require('postcss-class-rename');
 
+// js
 module.exports = {
     plugins: [
         classRename({
