@@ -1,10 +1,14 @@
-myplugin/
+wordpress version 6.7
+
+bootstrap-custom-block/
 ├── assets/
 │   ├── js/
 │   │   └── bundle.js       // ملف JavaScript النهائي (مُجمع بواسطة Webpack)
 │   └── css/
 │       └── style.css       // ملف CSS الخاص بالإضافة
+|       |-- tailwind.css   
 ├── js/
+|   |-- dynamic-block.js    
 │   ├── custom-blocks.js    ملف بلوك سيتم تجزئته مستقبلا
 │   ├── index.js    // الملف الأساسي لإدارة الأكواد (نقطة الدخول)
 │   └── blocks/
@@ -12,6 +16,12 @@ myplugin/
 │       ├── bootstrap-row.js    // كود البلوك الخاص بالصفوف
 │       ├── bootstrap-column.js // كود البلوك الخاص بالأعمدة
 |       |-- bootstrap-auth.js // login and register 
+|       |-- tail.js 
+|   |__ patterns
+|       |__header.js
+|       |__footer.js
 ├── index.php               // الملف الرئيسي للإضافة (PHP)
 ├── package.json            // إعدادات Node.js والمكتبات
+|-- tailwind.config.js
+|-- postcss.config.js
 ├── webpack.config.js       // إعداد Webpack لتجميع JavaScript

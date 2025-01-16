@@ -1,0 +1,3 @@
+@tailwind base; /* القواعد الأساسية (CSS Reset) */
+@tailwind components; /* مكونات مخصصة إذا كنت تستخدمها */
+@tailwind utilities; /* الأدوات المساعدة */

@@ -1,14 +1,12 @@
-// bootstrap files
-import 'bootstrap';
-import 'bootstrap/dist/css/bootstrap.min.css';
-// blocks file 
-import './blocks/bootstrap-header.js';
-import './blocks/call-to-action.js';
-import './blocks/bootstrap-row.js';
-import './blocks/custom-card.js';
-import './blocks/bootstrap-col.js';
-import './blocks/bootstrap-search.js';
-import './blocks/bootstrap-auth.js';
-import './blocks/bootstrap-accordion.js';
-//
-import '../assets/css/style.css';
+import './blocks/elements/div1.js';
+const queryLoop = require('./patterns/query-loop.js');
+import './blocks/elements/card.js';
+import './blocks/elements/container.js';
+import './blocks/elements/columns.js';
+import './patterns/flex.js';
+import './patterns/grid.js';
+import './blocks/elements/button.js';
+import './patterns/header.js';
+import './blocks/data/registration.js';
+// import './custom/classname.js';
+

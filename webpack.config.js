@@ -1,33 +1,28 @@
 const path = require("path");
-const webpack = require('webpack');
 
 module.exports = {
-    entry: "./js/index.js", // نقطة الدخول الرئيسية
-    output: {
-        path: path.resolve(__dirname, "assets/js"), // المسار النهائي
-        filename: "bundle.js", // الملف الناتج
-    },
-    mode: "development", // أو "production"
-    module: {
-        rules: [
-            {
-                test: /\.css$/,
-                use: ["style-loader", "css-loader"], // لتحميل CSS
-            },
-            {
-                test: /\.(scss|sass)$/,
-                use: ["style-loader", "css-loader", "sass-loader"], // لتحميل SCSS إذا كنت بحاجة إلى ذلك
-            },
-            {
-                test: /\.(js|jsx)$/,
-                exclude: /node_modules/,
-                use: {
-                    loader: "babel-loader", // لتحويل ES6 إلى JavaScript متوافق مع المتصفحات
-                },
-            },
-        ],
-    },
-    resolve: {
-        extensions: [".js", ".jsx"],
-    },
+  entry: "./js/index.js", // Main entry point
+  watch: true,
+  output: {
+    filename: "bundle.js", // Output file
+    path: path.resolve(__dirname, "assets/js")
+  },
+  module: {
+    rules: [
+      {
+        test: /\.js$/, // Apply loader to .js files
+        exclude: /node_modules/, // Ignore node_modules
+        use: {
+          loader: "babel-loader" // Use Babel loader
+        }
+      }
+    ],
+  },
+  externals: {
+    "@wordpress/blocks": ["wp", "blocks"],
+    "@wordpress/block-editor": ["wp", "blockEditor"],
+    "@wordpress/components": ["wp", "components"],
+    "@wordpress/i18n": ["wp", "i18n"],
+  },
+  mode: "production" // Change to "production" for production builds
 };
